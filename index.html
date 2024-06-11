@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.header .profile-pic img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.search-container {
+    display: flex;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    margin-right: 10px;
+}
+
+.search-container .search-btn {
+    background-color: #00bfa5;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+.message-list {
+    padding: 20px;
+}
+
+.message-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.message-item .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.message-item .message-content {
+    flex: 1;
+}
+
+.message-item .message-content h3 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.message-item .message-content p {
+    margin: 5px 0 0;
+    color: #777;
+}
+
+.message-item .message-meta {
+    text-align: right;
+}
+
+.message-item .message-meta .time {
+    display: block;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.message-item .message-meta .unread-count {
+    background-color: #00bfa5;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+</style>
+<body>
+    <header class="header">
+        <h1>Messages</h1>
+        <div class="profile-pic">
+            <img src="images/profile.jpg" alt="Profile Picture">
+        </div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" placeholder="Search">
+        <button class="search-btn">&#x27A4;</button>
+    </div>
+
+    <main>
+        <div class="message-list">
+            <div class="message-item">
+                <img src="images/casey.jpg" alt="Casey" class="avatar">
+                <div class="message-content">
+                    <h3>Casey</h3>
+                    <p>I am in Jaipur, wbu?</p>
+                </div>
+                <div class="message-meta">
+                    <span class="time">9:41 AM</span>
+                    <span class="unread-count">4</span>
+                </div>
+            </div>
+            <!-- Repeat above div for other messages -->
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const messages = [
+        { name: "Casey", message: "I am in Jaipur, wbu?", time: "9:41 AM", unread: 4, avatar: "images/casey.jpg" },
+        { name: "Nyla", message: "I am in Jaipur, wbu?", time: "9:41 AM", unread: 4, avatar: "images/nyla.jpg" },
+        { name: "Ken", message: "I am in Jaipur, wbu?", time: "9:41 AM", unread: 4, avatar: "images/ken.jpg" },
+        { name: "Ketty Perry", message: "I am in Jaipur, wbu?", time: "9:41 AM", unread: 4, avatar: "images/ketty.jpg" },
+        { name: "Mike Ross", message: "I am in Jaipur, wbu?", time: "9:41 AM", unread: 4, avatar: "images/mike.jpg" },
+        { name: "Rachel", message: "I am in Jaipur, wbu?", time: "9:41 AM", unread: 4, avatar: "images/rachel.jpg" },
+        { name: "Harvey Specter", message: "I am in Jaipur, wbu?", time: "9:41 AM", unread: 4, avatar: "images/harvey.jpg" },
+    ];
+
+    const messageList = document.querySelector('.message-list');
+
+    messages.forEach(msg => {
+        const messageItem = document.createElement('div');
+        messageItem.className = 'message-item';
+        messageItem.innerHTML = `
+            <img src="${msg.avatar}" alt="${msg.name}" class="avatar">
+            <div class="message-content">
+                <h3>${msg.name}</h3>
+                <p>${msg.message}</p>
+            </div>
+            <div class="message-meta">
+                <span class="time">${msg.time}</span>
+                <span class="unread-count">${msg.unread}</span>
+            </div>
+        `;
+        messageList.appendChild(messageItem);
+    });
+});
+
+    </script>
+</body>
+</html>
